@@ -16,17 +16,19 @@
         <section id="interactiveGeneratorSection">
             <h2>Interactive Harmony Generator</h2>
 
-            <div id="colorPickerContainer">
-                <canvas id="hueWheelCanvas" width="250" height="250"></canvas>
-                <canvas id="slPickerCanvas" width="200" height="200"></canvas>
-            </div>
-
-            <div class="controls">
-                <div>
+            <div id="baseColorSelectionGroup">
+                <div id="colorPickerContainer">
+                    <canvas id="hueWheelCanvas" width="250" height="250"></canvas>
+                    <canvas id="slPickerCanvas" width="200" height="200"></canvas>
+                </div>
+                <div class="control-group">
                     <label for="baseColorInput">Base Color (Hex):</label>
                     <input type="text" id="baseColorInput" value="#3498db">
                 </div>
-                <div>
+            </div>
+
+            <div class="controls"> <!-- This div will now group harmony rule and generate button -->
+                <div class="control-group">
                     <label for="harmonyRuleSelect">Harmony Rule:</label>
                     <select id="harmonyRuleSelect">
                         <option value="analogous">Analogous</option>

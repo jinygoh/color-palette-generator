@@ -317,9 +317,13 @@ document.addEventListener('DOMContentLoaded', () => {
         return harmonyPalette; // Return the generated palette
     }
 
-    generateHarmonyBtn.addEventListener('click', handleGenerateHarmony);
-    // Also trigger harmony generation when the rule changes
-    harmonyRuleSelect.addEventListener('change', handleGenerateHarmony);
+    generateHarmonyBtn.addEventListener('click', () => {
+        updateColorFromPicker(); // Ensures pickers (esp. hue wheel indicators) are updated
+    });
+    // Also trigger harmony generation and picker updates when the rule changes
+    harmonyRuleSelect.addEventListener('change', () => {
+        updateColorFromPicker(); // Ensures pickers (esp. hue wheel indicators) are updated
+    });
 
     // Sync hex input to picker
     baseColorInput.addEventListener('input', () => {

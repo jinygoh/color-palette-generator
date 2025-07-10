@@ -90,16 +90,29 @@ main {
     color: #333;
 }
 
-#interactiveGeneratorSection .controls {
+/* New styles for the base color selection group */
+#baseColorSelectionGroup {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    align-items: center; /* Center the picker and hex input horizontally */
+    gap: 1.5rem; /* Space between picker container and hex input field */
+    margin-bottom: 1.5rem; /* Space before the next group (harmony controls) */
 }
 
-#interactiveGeneratorSection .controls > div {
+/* Styles for individual control groups (label + input/select) */
+.control-group {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    width: 100%; /* Make control groups take full width of their container */
+}
+
+#interactiveGeneratorSection .controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items if they don't take full width */
+    gap: 1rem;
+    width: 100%; /* Ensure controls div takes available width */
 }
 
 #interactiveGeneratorSection label {
