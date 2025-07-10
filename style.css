@@ -165,10 +165,10 @@ main {
 }
 
 /* New layout container for generator section */
-.generator-layout-container {
-    display: flex;
-    flex-direction: column; /* Default: stack pickers above controls */
-    gap: 1.5rem; /* Gap when stacked */
+#interactiveGeneratorSection .generator-layout-container { /* Increased specificity */
+    display: flex !important;
+    flex-direction: column !important; /* Default: stack pickers above controls */
+    gap: 1.5rem !important; /* Gap when stacked */
 }
 
 #visualPickerGroup {
@@ -321,12 +321,12 @@ main {
     border-radius: 8px;
     padding: 1.5rem;
     box-shadow: 0 2px 10px var(--shadow-color);
-    display: flex;
-    flex-direction: column; /* Stack swatches vertically initially */
-    align-items: center;
-    gap: 1rem; /* Space between color swatch containers */
-    width: fit-content; /* Adjust to content or set a fixed width */
-    min-width: 200px; /* Minimum width for a palette */
+    display: flex !important;
+    flex-direction: column !important; /* Stack swatches vertically initially */
+    align-items: center !important;
+    gap: 1rem !important; /* Space between color swatch containers */
+    width: fit-content !important; /* Adjust to content or set a fixed width */
+    min-width: 200px !important; /* Minimum width for a palette */
 }
 
 .palette h2 { /* Titles within a palette, if any were to be added */
@@ -437,10 +437,13 @@ footer {
         align-self: center;
     }
 
-    .palette {
-        flex-direction: row; /* Display swatches side-by-side on larger screens */
-        flex-wrap: wrap; /* Allow swatches to wrap within a palette */
-        justify-content: center;
+    /* DEBUGGING: Force palette horizontal layout */
+    #paletteDisplay .palette { /* Increased specificity */
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        /* width: fit-content !important; */ /* Already in base, or use 100% if box should stretch */
     }
 
     .color-swatch-container {
@@ -462,20 +465,25 @@ footer {
         gap: 2rem;
     }
 
-    .generator-layout-container { /* Side-by-side for pickers and controls */
-        flex-direction: row;
-        align-items: flex-start; /* Align top of picker column and controls column */
-        gap: 2rem; /* Space between picker column and controls column */
+    /* DEBUGGING: Force internal layout for generator */
+    #interactiveGeneratorSection .generator-layout-container {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        gap: 2rem !important;
     }
 
-    #visualPickerGroup {
-        flex: 0 0 auto; /* Picker group takes its content's width */
-        /* Could also use a percentage or fixed width if preferred: e.g., flex-basis: 300px; */
+    #interactiveGeneratorSection #visualPickerGroup {
+        flex: 0 0 auto !important;
+        /* display: flex !important; */ /* Base style already has this */
+        /* justify-content: center !important; */ /* Base style already has this */
     }
 
-    .controls-group-right {
-        flex: 1 1 auto; /* Controls group takes the remaining space */
-        /* Controls within this group are already stacked by its own flex-direction: column */
+    #interactiveGeneratorSection .controls-group-right {
+        flex: 1 1 auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
     }
 
     #interactiveGeneratorSection {
