@@ -9,57 +9,75 @@
 <body>
     <header>
         <h1>Color Palette Generator</h1>
-        <button id="randomPaletteBtn">Random Palette</button>
+        <!-- Random Palette Button removed from header -->
     </header>
 
     <main>
-        <section id="interactiveGeneratorSection">
-            <h2>Interactive Harmony Generator</h2>
-
-            <div id="colorPickerContainer">
-                <canvas id="hueWheelCanvas" width="250" height="250"></canvas>
-                <canvas id="slPickerCanvas" width="200" height="200"></canvas>
+        <div id="topAreaWrapper"> <!-- New wrapper for button and instructions -->
+            <div id="topControlsContainer">
+                <button id="randomPaletteBtn">Random Palette</button>
             </div>
-
-            <div class="controls">
-                <div>
-                    <label for="baseColorInput">Base Color (Hex):</label>
-                    <input type="text" id="baseColorInput" value="#3498db">
-                </div>
-                <div>
-                    <label for="harmonyRuleSelect">Harmony Rule:</label>
-                    <select id="harmonyRuleSelect">
-                        <option value="analogous">Analogous</option>
-                        <option value="monochromatic">Monochromatic</option>
-                        <option value="splitcomplement">Split Complement</option>
-                        <option value="triad">Triad</option>
-                        <option value="tetrad">Tetrad</option>
-                        <option value="complement">Complement (Base + Complement)</option>
-                        <option value="shades">Shades</option>
-                        <!-- TinyColor doesn't have 'shades' directly, we'll implement this with lighten/darken if chosen -->
-                    </select>
-                </div>
-                <button id="generateHarmonyBtn">Generate Harmony</button>
-            </div>
+            <section id="usageInstructions">
+                <p>
+                    <strong>Welcome to the Color Palette Generator!</strong><br>
+                    Use the "Random Palette" button to the left to generate a set of 5 random colors.
+                    For more control, use the "Interactive Harmony Generator" below:
+                1. Pick a base color using the visual color wheel and saturation/lightness square, or by typing a Hex code.
+                2. Select a harmony rule from the dropdown (e.g., Analogous, Monochromatic).
+                3. The palette will update automatically. Click any color swatch or hex code to copy it.
+            </p>
         </section>
 
-        <hr class="separator">
+        <div id="mainContentWrapper">
+            <section id="interactiveGeneratorSection">
+                <h2>Interactive Harmony Generator</h2>
 
-        <section id="paletteDisplayTitleSection">
-            <h2 id="paletteDisplayTitle">Color Palette</h2>
-        </section>
-        <section id="paletteDisplay">
-            <!-- Color palettes will be dynamically inserted here -->
-            <div class="palette">
-                <!-- Example of a single color swatch -->
-                <!--
-                <div class="color-swatch-container">
-                    <div class="color-swatch" style="background-color: #FF5733;"></div>
-                    <p class="hex-code">#FF5733</p>
+            <div class="generator-layout-container"> <!-- New main flex container -->
+                <div id="visualPickerGroup"> <!-- Wrapper for visual pickers -->
+                    <div id="colorPickerContainer">
+                        <canvas id="hueWheelCanvas" width="250" height="250"></canvas>
+                        <canvas id="slPickerCanvas" width="200" height="200"></canvas>
+                    </div>
                 </div>
-                -->
+                <div class="controls-group-left"> <!-- Wrapper for all controls on the left -->
+                    <div class="control-group hex-input-group">
+                        <label for="baseColorInput">Base Color (Hex):</label>
+                        <input type="text" id="baseColorInput" value="#3498db">
+                    </div>
+                    <div class="control-group">
+                        <label for="harmonyRuleSelect">Harmony Rule:</label>
+                        <select id="harmonyRuleSelect">
+                            <option value="analogous">Analogous</option>
+                            <option value="monochromatic">Monochromatic</option>
+                            <option value="splitcomplement">Split Complement</option>
+                            <option value="triad">Triad</option>
+                            <option value="tetrad">Tetrad</option>
+                            <option value="complement">Complement (Base + Complement)</option>
+                            <option value="shades">Shades</option>
+                        </select>
+                    </div>
+                    <button id="generateHarmonyBtn">Generate Harmony</button>
+                </div>
+            </section>
+
+            <!-- Vertical separator removed -->
+
+            <div id="paletteOutputSection">
+                <section id="paletteDisplay">
+                    <h2 id="paletteDisplayTitle">Color Palette</h2>
+                    <!-- Color palettes will be dynamically inserted here -->
+                    <div class="palette">
+                        <!-- Example of a single color swatch -->
+                        <!--
+                        <div class="color-swatch-container">
+                            <div class="color-swatch" style="background-color: #FF5733;"></div>
+                            <p class="hex-code">#FF5733</p>
+                        </div>
+                        -->
+                    </div>
+                </section>
             </div>
-        </section>
+        </div> <!-- End of mainContentWrapper -->
     </main>
 
     <footer>
@@ -69,3 +87,4 @@
     <script type="module" src="script.js"></script>
 </body>
 </html>
+

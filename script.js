@@ -230,7 +230,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Generic Display Palette Function (Modified) ---
     function displayPalette(colors, title = "Color Palette") {
         paletteDisplay.innerHTML = ''; // Clear existing palettes
-        paletteDisplayTitle.textContent = title;
+
+        const paletteTitle = document.createElement('h2');
+        paletteTitle.id = 'paletteDisplayTitle';
+        paletteTitle.textContent = title;
+        paletteDisplay.appendChild(paletteTitle);
 
         if (!colors || colors.length === 0) {
             const message = document.createElement('p');
@@ -317,9 +321,13 @@ document.addEventListener('DOMContentLoaded', () => {
         return harmonyPalette; // Return the generated palette
     }
 
-    generateHarmonyBtn.addEventListener('click', handleGenerateHarmony);
-    // Also trigger harmony generation when the rule changes
-    harmonyRuleSelect.addEventListener('change', handleGenerateHarmony);
+    generateHarmonyBtn.addEventListener('click', () => {
+        updateColorFromPicker(); // Ensures pickers (esp. hue wheel indicators) are updated
+    });
+    // Also trigger harmony generation and picker updates when the rule changes
+    harmonyRuleSelect.addEventListener('change', () => {
+        updateColorFromPicker(); // Ensures pickers (esp. hue wheel indicators) are updated
+    });
 
     // Sync hex input to picker
     baseColorInput.addEventListener('input', () => {
