@@ -23,30 +23,31 @@ body {
     color: var(--text-color);
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh; /* Keep this to ensure footer sticks down if content IS short */
+    /* Consider overflow: hidden; if absolutely no scroll is desired, but can hide content */
 }
 
 header {
     background-color: var(--primary-surface-color);
     color: var(--text-color);
-    padding: 1rem 2rem;
+    padding: 0.75rem 1.5rem; /* Reduced padding */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 5px var(--shadow-color);
+    box-shadow: 0 1px 3px var(--shadow-color); /* Reduced shadow */
     border-bottom: 1px solid var(--border-color);
 }
 
 header h1 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.3rem; /* Reduced font size */
 }
 
 #randomPaletteBtn {
     background-color: var(--accent-color-secondary);
-    color: var(--bg-color); /* Dark text on light green button for contrast */
+    color: var(--bg-color);
     border: none;
-    padding: 0.75rem 1.5rem;
+    padding: 0.6rem 1.2rem; /* Reduced padding */
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -70,47 +71,65 @@ main {
     box-sizing: border-box;
 }
 
+/* Top Controls Container for Random Palette Button */
+#topControlsContainer {
+    width: 100%;
+    max-width: 900px; /* Match usage instructions width for alignment */
+    margin-bottom: 1rem; /* Reduced margin */
+    display: flex; /* To control button alignment if needed, e.g., align-self: flex-start */
+}
+
+#randomPaletteBtn { /* General style, now that it's not tied to header or specific section */
+    /* Retains its original styling for color, padding, etc. */
+    /* No specific flex item properties here unless it's always in a flex container */
+    /* If it was previously in header, header specific align-items might have affected it. */
+    /* Now it's more standalone, can add margin if needed e.g. margin-right: auto to push left */
+}
+
+
 /* Styles for Usage Instructions */
 #usageInstructions {
-    display: flex; /* Use flexbox to position button and text */
-    align-items: center; /* Vertically align button and text block */
-    gap: 1.5rem; /* Space between button and text */
+    /* display: flex; */ /* Removed flex as button is no longer inside */
+    /* align-items: center; */
+    /* gap: 1.5rem; */
     background-color: var(--primary-surface-color);
     color: var(--text-color-secondary);
-    padding: 1rem 1.5rem;
+    padding: 1rem 1.5rem; /* Keep padding for the box */
     border-radius: 8px;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem; /* Reduced margin */
     width: 100%;
-    max-width: 900px; /* Can be wider than other sections */
+    max-width: 900px;
     box-sizing: border-box;
     border: 1px solid var(--border-color);
     box-shadow: 0 2px 8px var(--shadow-color);
 }
 
-#usageInstructions #randomPaletteBtn { /* Style the button within this section */
-    flex-shrink: 0; /* Prevent button from shrinking */
-    /* Inherits most #randomPaletteBtn styles, add specific overrides if needed */
-    /* For instance, if its original style had align-self or margins not suitable here */
-}
+/* #usageInstructions #randomPaletteBtn { */ /* No longer needed as button is outside */
+    /* flex-shrink: 0; */
+/* } */
 
 #usageInstructions p {
     margin: 0;
-    line-height: 1.6;
-    flex-grow: 1; /* Allow text to take remaining space */
+    line-height: 1.5; /* Slightly reduced line height */
+    /* flex-grow: 1; */ /* No longer needed */
 }
 #usageInstructions strong {
     color: var(--text-color);
 }
 
 /* Responsive adjustment for instructions section if button and text become too cramped */
+/* This media query might not be needed for #usageInstructions anymore, or could be repurposed */
 @media (max-width: 600px) {
-    #usageInstructions {
-        flex-direction: column; /* Stack button and text on very small screens */
-        align-items: flex-start; /* Align items to the start when stacked */
+    #topControlsContainer {
+        justify-content: center; /* Center the button on small screens */
     }
-    #usageInstructions #randomPaletteBtn {
-        margin-bottom: 1rem; /* Add space below button when stacked */
-    }
+    /* #usageInstructions { */
+        /* flex-direction: column; */
+        /* align-items: flex-start; */
+    /* } */
+    /* #usageInstructions #randomPaletteBtn { */
+        /* margin-bottom: 1rem; */
+    /* } */
 }
 
 
@@ -358,7 +377,7 @@ footer {
     display: none;
     border: none;
     border-left: 1px solid var(--border-color);
-    margin: 0 1rem; /* Spacing around vertical separator */
+    margin: 0; /* Remove horizontal margins, rely on parent gap */
     align-self: stretch; /* Makes it take full height of flex container */
 }
 
@@ -398,26 +417,46 @@ footer {
         flex-direction: row; /* Side-by-side */
         justify-content: center; /* Center the two main sections if they don't fill the space */
         align-items: flex-start; /* Align to top */
-        gap: 2rem; /* Gap between generator and palette sections */
+        gap: 0; /* No gap from flexbox, separator handles spacing */
     }
 
     #interactiveGeneratorSection {
-        /* width: 40%; */ /* Adjust width as desired */
-        /* max-width: 500px; */ /* Max width for generator */
-        /* flex-shrink: 0; */ /* Prevent shrinking if palette section is large */
-        flex: 1 1 calc(50% - 1rem); /* Grow/shrink allowed, basis is 50% minus half gap */
+        flex: 1 1 calc(50% - 0.25rem - 1px); /* 50% minus half separator width (margin + border) */
         box-sizing: border-box;
-        margin-bottom: 0; /* Remove bottom margin when side-by-side */
-        align-self: stretch; /* Make it same height as sibling if possible */
+        margin-bottom: 0;
+        align-self: stretch;
+        padding: 0.75rem; /* Value from previous step, can be reviewed if still too large */
     }
 
     #paletteOutputSection {
-        /* width: 55%; */ /* Adjust width as desired */
-        /* max-width: 700px; */ /* Max width for palette display area */
-        /* flex-grow: 1; */ /* Allow palette section to grow if space is available */
-        flex: 1 1 calc(50% - 1rem); /* Grow/shrink allowed, basis is 50% minus half gap */
+        flex: 1 1 calc(50% - 0.25rem - 1px); /* 50% minus half separator width (margin + border) */
         box-sizing: border-box;
-        align-self: stretch; /* Make it same height as sibling if possible */
+        align-self: stretch;
+        padding: 0.75rem; /* Value from previous step, can be reviewed if still too large */
+    }
+
+    #interactiveGeneratorSection h2,
+    #paletteDisplayTitleSection h2 { /* Reduce title margins */
+        margin-top: 0.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    #colorPickerContainer { /* Reduce margin below pickers */
+        margin-bottom: 1rem;
+        gap: 10px; /* Reduce gap between pickers */
+    }
+
+    #baseColorSelectionGroup { /* Reduce margin below this group */
+        margin-bottom: 1rem;
+        gap: 1rem; /* Reduce gap within this group */
+    }
+
+    #interactiveGeneratorSection .controls { /* Reduce gap in controls */
+        gap: 0.75rem;
+    }
+
+    .palette { /* Reduce padding inside palette box */
+        padding: 1rem;
     }
 
     /* Ensure max-widths don't conflict with the 50% calculation if the screen is very wide */
