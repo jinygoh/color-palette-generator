@@ -74,7 +74,8 @@ main {
 /* Wrapper for Top Area (Button + Instructions) */
 #topAreaWrapper {
     display: flex;
-    align-items: flex-start; /* Align items to the top of their row */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items when stacked */
     gap: 1.5rem; /* Space between button and instructions, was 1rem, increased for clarity */
     width: 100%;
     /* max-width: 1200px; */ /* Let content within define overall width, or set on main */
@@ -166,9 +167,9 @@ main {
 
 /* New layout container for generator section */
 #interactiveGeneratorSection .generator-layout-container { /* Increased specificity */
-    display: flex !important;
-    flex-direction: column !important; /* Default: stack pickers above controls */
-    gap: 1.5rem !important; /* Gap when stacked */
+    display: flex;
+    flex-direction: column; /* Default: stack pickers above controls */
+    gap: 1.5rem; /* Gap when stacked */
 }
 
 #visualPickerGroup {
@@ -302,6 +303,8 @@ main {
 }
 
 #paletteDisplayTitle {
+    display: block;
+    width: 100%;
     margin: 0;
     color: var(--text-color);
 }
@@ -460,46 +463,22 @@ footer {
 /* Large screens - STACKED layout for main sections, but side-by-side INSIDE generator */
 @media (min-width: 1024px) {
     #mainContentWrapper {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        align-items: flex-start;
         gap: 2rem;
     }
 
     /* DEBUGGING: Force internal layout for generator */
     #interactiveGeneratorSection .generator-layout-container {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: flex-start !important;
-        gap: 2rem !important;
-    }
-
-    #interactiveGeneratorSection #visualPickerGroup {
-        flex: 0 0 auto !important;
-        /* display: flex !important; */ /* Base style already has this */
-        /* justify-content: center !important; */ /* Base style already has this */
-    }
-
-    #interactiveGeneratorSection .controls-group-right {
-        flex: 1 1 auto !important;
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 1rem !important;
+        flex-direction: row;
     }
 
     #interactiveGeneratorSection {
-        width: 100%;
-        max-width: 900px; /* Increase max-width to better accommodate internal side-by-side */
-        box-sizing: border-box;
-        margin-bottom: 0;
-        padding: 1.5rem 2rem;
+        flex: 1 1 50%;
     }
 
     #paletteOutputSection {
-        /* flex: 1 1 calc(50% - 0.25rem - 1px); */ /* REMOVED side-by-side flex */
-        width: 100%; /* Take full width of parent */
-        max-width: 1200px; /* Restore original max-width for palette display */
-        box-sizing: border-box;
-        padding: 1.5rem; /* Restore reasonable padding */
+        flex: 1 1 50%;
     }
 
     /* Restore some original spacing within sections if desired, or keep compactness */

@@ -230,7 +230,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Generic Display Palette Function (Modified) ---
     function displayPalette(colors, title = "Color Palette") {
         paletteDisplay.innerHTML = ''; // Clear existing palettes
-        paletteDisplayTitle.textContent = title;
+
+        const paletteTitle = document.createElement('h2');
+        paletteTitle.id = 'paletteDisplayTitle';
+        paletteTitle.textContent = title;
+        paletteDisplay.appendChild(paletteTitle);
 
         if (!colors || colors.length === 0) {
             const message = document.createElement('p');

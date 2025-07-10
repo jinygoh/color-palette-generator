@@ -38,10 +38,9 @@
                         <canvas id="hueWheelCanvas" width="250" height="250"></canvas>
                         <canvas id="slPickerCanvas" width="200" height="200"></canvas>
                     </div>
-                    </div>
-
-                <div class="controls-group-right"> <!-- Wrapper for all controls on the right -->
-                    <div class="control-group hex-input-group"> <!-- Moved Hex input here -->
+                </div>
+                <div class="controls-group-left"> <!-- Wrapper for all controls on the left -->
+                    <div class="control-group hex-input-group">
                         <label for="baseColorInput">Base Color (Hex):</label>
                         <input type="text" id="baseColorInput" value="#3498db">
                     </div>
@@ -55,7 +54,6 @@
                             <option value="tetrad">Tetrad</option>
                             <option value="complement">Complement (Base + Complement)</option>
                             <option value="shades">Shades</option>
-                            <!-- TinyColor doesn't have 'shades' directly, we'll implement this with lighten/darken if chosen -->
                         </select>
                     </div>
                     <button id="generateHarmonyBtn">Generate Harmony</button>
@@ -65,10 +63,8 @@
             <!-- Vertical separator removed -->
 
             <div id="paletteOutputSection">
-                <section id="paletteDisplayTitleSection">
-                    <h2 id="paletteDisplayTitle">Color Palette</h2>
-                </section>
                 <section id="paletteDisplay">
+                    <h2 id="paletteDisplayTitle">Color Palette</h2>
                     <!-- Color palettes will be dynamically inserted here -->
                     <div class="palette">
                         <!-- Example of a single color swatch -->
@@ -91,3 +87,4 @@
     <script type="module" src="script.js"></script>
 </body>
 </html>
+
