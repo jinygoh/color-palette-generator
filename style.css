@@ -1,21 +1,40 @@
+/* Dark Theme Variables */
+:root {
+    --bg-color: #1a1a1a; /* Very dark grey, almost black */
+    --primary-surface-color: #2c2c2c; /* Dark grey for surfaces like cards, sections */
+    --secondary-surface-color: #3a3a3a; /* Slightly lighter grey for inputs, etc. */
+    --text-color: #e0e0e0; /* Light grey for text */
+    --text-color-secondary: #b0b0b0; /* Medium grey for less important text */
+    --accent-color-primary: #007bff; /* Vibrant blue for primary actions */
+    --accent-color-primary-hover: #0056b3;
+    --accent-color-secondary: #5cb85c; /* Green for secondary/positive actions */
+    --accent-color-secondary-hover: #4cae4c;
+    --border-color: #444; /* Darker border color */
+    --shadow-color: rgba(0, 0, 0, 0.5); /* Darker shadow for depth */
+    --input-bg-color: #333;
+    --input-text-color: #e0e0e0;
+    --input-border-color: #555;
+}
+
 body {
     font-family: sans-serif;
     margin: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
 header {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--primary-surface-color);
+    color: var(--text-color);
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px var(--shadow-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
 header h1 {
@@ -24,8 +43,8 @@ header h1 {
 }
 
 #randomPaletteBtn {
-    background-color: #5cb85c;
-    color: white;
+    background-color: var(--accent-color-secondary);
+    color: var(--bg-color); /* Dark text on light green button for contrast */
     border: none;
     padding: 0.75rem 1.5rem;
     text-align: center;
@@ -38,7 +57,7 @@ header h1 {
 }
 
 #randomPaletteBtn:hover {
-    background-color: #4cae4c;
+    background-color: var(--accent-color-secondary-hover);
 }
 
 main {
@@ -51,15 +70,38 @@ main {
     box-sizing: border-box;
 }
 
+/* Styles for Usage Instructions */
+#usageInstructions {
+    background-color: var(--primary-surface-color);
+    color: var(--text-color-secondary);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 900px; /* Can be wider than other sections */
+    box-sizing: border-box;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+#usageInstructions p {
+    margin: 0;
+    line-height: 1.6;
+}
+#usageInstructions strong {
+    color: var(--text-color);
+}
+
+
 #interactiveGeneratorSection {
-    background-color: #fff;
+    background-color: var(--primary-surface-color);
     padding: 1.5rem 2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    box-shadow: 0 2px 10px var(--shadow-color);
     margin-bottom: 2rem;
     width: 100%;
     max-width: 700px; /* Max width for the controls section */
     box-sizing: border-box;
+    border: 1px solid var(--border-color);
 }
 
 /* Styles for the new Color Picker Canvas elements */
@@ -74,9 +116,9 @@ main {
 
 #hueWheelCanvas,
 #slPickerCanvas {
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     cursor: crosshair;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    box-shadow: 0 0 5px var(--shadow-color);
 }
 
 #hueWheelCanvas {
@@ -87,7 +129,7 @@ main {
     margin-top: 0;
     margin-bottom: 1.5rem;
     text-align: center;
-    color: #333;
+    color: var(--text-color);
 }
 
 /* New styles for the base color selection group */
@@ -117,23 +159,32 @@ main {
 
 #interactiveGeneratorSection label {
     font-weight: bold;
-    color: #555;
+    color: var(--text-color-secondary);
     font-size: 0.9rem;
 }
 
 #interactiveGeneratorSection input[type="text"],
 #interactiveGeneratorSection select {
+    background-color: var(--input-bg-color);
+    color: var(--input-text-color);
     padding: 0.75rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--input-border-color);
     border-radius: 4px;
     font-size: 1rem;
     width: 100%;
     box-sizing: border-box;
 }
+#interactiveGeneratorSection input[type="text"]:focus,
+#interactiveGeneratorSection select:focus {
+    border-color: var(--accent-color-primary);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--accent-color-primary-hover);
+}
+
 
 #generateHarmonyBtn {
-    background-color: #3498db; /* Blue color */
-    color: white;
+    background-color: var(--accent-color-primary);
+    color: white; /* White text on blue button */
     border: none;
     padding: 0.75rem 1.5rem;
     text-align: center;
@@ -143,17 +194,17 @@ main {
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    align-self: flex-start; /* Align button to the start if controls were row */
+    align-self: flex-start;
     margin-top: 0.5rem;
 }
 
 #generateHarmonyBtn:hover {
-    background-color: #2980b9;
+    background-color: var(--accent-color-primary-hover);
 }
 
 .separator {
     border: none;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid var(--border-color);
     margin: 2rem 0;
     width: 100%;
     max-width: 1200px;
@@ -168,7 +219,7 @@ main {
 
 #paletteDisplayTitle {
     margin: 0;
-    color: #333;
+    color: var(--text-color);
 }
 
 #paletteDisplay {
@@ -181,11 +232,11 @@ main {
 }
 
 .palette {
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: var(--primary-surface-color);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 1.5rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 10px var(--shadow-color);
     display: flex;
     flex-direction: column; /* Stack swatches vertically initially */
     align-items: center;
@@ -194,11 +245,11 @@ main {
     min-width: 200px; /* Minimum width for a palette */
 }
 
-.palette h2 {
+.palette h2 { /* Titles within a palette, if any were to be added */
     margin-top: 0;
     margin-bottom: 1rem;
     font-size: 1.2rem;
-    color: #555;
+    color: var(--text-color-secondary);
     text-align: center;
 }
 
@@ -213,41 +264,95 @@ main {
     width: 150px;
     height: 150px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color); /* Darker border for swatches */
     margin-bottom: 0.5rem; /* Space between swatch and hex code */
     cursor: pointer; /* Indicate it's clickable for copy */
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .color-swatch:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px var(--accent-color-primary); /* Glow effect on hover */
 }
 
 .hex-code {
     font-family: 'Courier New', Courier, monospace;
-    background-color: #eee;
+    background-color: var(--secondary-surface-color); /* Darker background for hex codes */
+    color: var(--text-color); /* Light text for hex codes */
     padding: 0.25rem 0.5rem;
     border-radius: 3px;
     font-size: 0.9rem;
     cursor: pointer; /* Indicate it's clickable for copy */
     user-select: text; /* Allow text selection for manual copy */
+    border: 1px solid var(--border-color);
 }
 
 .hex-code:hover {
-    background-color: #ddd;
+    background-color: var(--input-bg-color); /* Even darker on hover */
+    border-color: var(--accent-color-secondary);
 }
 
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--primary-surface-color);
+    color: var(--text-color-secondary);
     text-align: center;
     padding: 1rem;
     font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
 }
 
+/* Main Content Wrapper for Side-by-Side Layout */
+#mainContentWrapper {
+    display: flex;
+    flex-direction: column; /* Default for smaller screens */
+    gap: 2rem; /* Gap between generator and palette sections when stacked */
+    width: 100%;
+    align-items: flex-start; /* Align items to the start when stacked */
+}
+
+#interactiveGeneratorSection,
+#paletteOutputSection {
+    width: 100%; /* Full width when stacked */
+    box-sizing: border-box;
+}
+
+#paletteOutputSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center title and palette display */
+}
+
+
+/* Separator Styling */
+.separator {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 2rem 0; /* Default for horizontal separator */
+    width: 100%;
+    max-width: 1200px;
+}
+
+.vertical-separator { /* Initially hidden, shown in side-by-side layout */
+    display: none;
+    border: none;
+    border-left: 1px solid var(--border-color);
+    margin: 0 1rem; /* Spacing around vertical separator */
+    align-self: stretch; /* Makes it take full height of flex container */
+}
+
+
 /* Responsive adjustments */
+/* Medium screens - still stacked, but allow generator to not be overly wide */
 @media (min-width: 768px) {
+    #interactiveGeneratorSection {
+        max-width: 700px; /* Keep interactive section from becoming too wide */
+        align-self: center; /* Center it if it's narrower than mainContentWrapper */
+    }
+     #paletteOutputSection {
+        max-width: 1200px; /* Palette can be wider */
+        align-self: center;
+    }
+
     .palette {
         flex-direction: row; /* Display swatches side-by-side on larger screens */
         flex-wrap: wrap; /* Allow swatches to wrap within a palette */
@@ -259,14 +364,51 @@ footer {
         margin-bottom: 1rem; /* Consistent bottom margin */
     }
 
-     .color-swatch {
+     .color-swatch { /* Swatch size adjustment for medium screens */
+        width: 100px; /* Slightly smaller for medium screens if palette is also narrower */
+        height: 100px;
+    }
+}
+
+/* Large screens - Side-by-side layout */
+@media (min-width: 1024px) {
+    #mainContentWrapper {
+        flex-direction: row; /* Side-by-side */
+        justify-content: center; /* Center the two main sections if they don't fill the space */
+        align-items: flex-start; /* Align to top */
+        gap: 2rem; /* Gap between generator and palette sections */
+    }
+
+    #interactiveGeneratorSection {
+        width: 40%; /* Adjust width as desired */
+        max-width: 500px; /* Max width for generator */
+        flex-shrink: 0; /* Prevent shrinking if palette section is large */
+        margin-bottom: 0; /* Remove bottom margin when side-by-side */
+        align-self: stretch; /* Make it same height as sibling if possible */
+    }
+
+    #paletteOutputSection {
+        width: 55%; /* Adjust width as desired */
+        max-width: 700px; /* Max width for palette display area */
+        flex-grow: 1; /* Allow palette section to grow if space is available */
+        align-self: stretch; /* Make it same height as sibling if possible */
+    }
+
+    .separator.horizontal-separator { /* Hide horizontal separator if side-by-side */
+        display: none;
+    }
+    .vertical-separator { /* Show vertical separator */
+        display: block;
+    }
+
+     .color-swatch { /* Restore or adjust swatch size for large screens */
         width: 120px;
         height: 120px;
     }
 }
 
-@media (min-width: 1024px) {
-     .color-swatch {
+@media (min-width: 1200px) { /* Even larger screens, more space for swatches */
+    .color-swatch {
         width: 150px;
         height: 150px;
     }
