@@ -13,14 +13,15 @@
     </header>
 
     <main>
-        <div id="topControlsContainer"> <!-- New wrapper for button -->
-            <button id="randomPaletteBtn">Random Palette</button>
-        </div>
-        <section id="usageInstructions">
-            <p>
-                <strong>Welcome to the Color Palette Generator!</strong><br>
-                Use the "Random Palette" button above to generate a set of 5 random colors.
-                For more control, use the "Interactive Harmony Generator" below:
+        <div id="topAreaWrapper"> <!-- New wrapper for button and instructions -->
+            <div id="topControlsContainer">
+                <button id="randomPaletteBtn">Random Palette</button>
+            </div>
+            <section id="usageInstructions">
+                <p>
+                    <strong>Welcome to the Color Palette Generator!</strong><br>
+                    Use the "Random Palette" button to the left to generate a set of 5 random colors.
+                    For more control, use the "Interactive Harmony Generator" below:
                 1. Pick a base color using the visual color wheel and saturation/lightness square, or by typing a Hex code.
                 2. Select a harmony rule from the dropdown (e.g., Analogous, Monochromatic).
                 3. The palette will update automatically. Click any color swatch or hex code to copy it.
@@ -60,7 +61,7 @@
                 </div>
             </section>
 
-            <hr class="separator vertical-separator"> <!-- Will be styled to be vertical or hidden -->
+            <!-- Vertical separator removed -->
 
             <div id="paletteOutputSection">
                 <section id="paletteDisplayTitleSection">

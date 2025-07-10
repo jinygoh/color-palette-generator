@@ -30,7 +30,7 @@ body {
 header {
     background-color: var(--primary-surface-color);
     color: var(--text-color);
-    padding: 0.75rem 1.5rem; /* Reduced padding */
+    padding: 1rem 2rem; /* Restored padding */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -63,7 +63,7 @@ header h1 {
 
 main {
     flex-grow: 1;
-    padding: 2rem;
+    padding: 1.5rem; /* Adjusted padding */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,15 +71,28 @@ main {
     box-sizing: border-box;
 }
 
-/* Top Controls Container for Random Palette Button */
-#topControlsContainer {
+/* Wrapper for Top Area (Button + Instructions) */
+#topAreaWrapper {
+    display: flex;
+    align-items: flex-start; /* Align items to the top of their row */
+    gap: 1.5rem; /* Space between button and instructions, was 1rem, increased for clarity */
     width: 100%;
-    max-width: 900px; /* Match usage instructions width for alignment */
-    margin-bottom: 1rem; /* Reduced margin */
-    display: flex; /* To control button alignment if needed, e.g., align-self: flex-start */
+    /* max-width: 1200px; */ /* Let content within define overall width, or set on main */
+    margin: 0 auto 1.5rem auto; /* Center wrapper and add space below */
+    padding: 0 1rem; /* Add horizontal padding to the wrapper if needed for alignment with content below */
+    box-sizing: border-box;
 }
 
-#randomPaletteBtn { /* General style, now that it's not tied to header or specific section */
+/* Top Controls Container for Random Palette Button */
+#topControlsContainer {
+    /* width: 100%; */
+    /* max-width: 900px; */
+    /* margin-bottom: 0.75rem; */
+    /* display: flex; */
+    flex-shrink: 0;
+}
+
+#randomPaletteBtn {
     /* Retains its original styling for color, padding, etc. */
     /* No specific flex item properties here unless it's always in a flex container */
     /* If it was previously in header, header specific align-items might have affected it. */
@@ -89,19 +102,20 @@ main {
 
 /* Styles for Usage Instructions */
 #usageInstructions {
-    /* display: flex; */ /* Removed flex as button is no longer inside */
+    /* display: flex; */
     /* align-items: center; */
     /* gap: 1.5rem; */
     background-color: var(--primary-surface-color);
     color: var(--text-color-secondary);
-    padding: 1rem 1.5rem; /* Keep padding for the box */
+    padding: 0.75rem 1rem;
     border-radius: 8px;
-    margin-bottom: 1.5rem; /* Reduced margin */
+    margin-bottom: 0; /* Margin handled by parent gap or topAreaWrapper margin */
     width: 100%;
-    max-width: 900px;
+    /* max-width: 900px; */
     box-sizing: border-box;
     border: 1px solid var(--border-color);
     box-shadow: 0 2px 8px var(--shadow-color);
+    flex-grow: 1; /* Instructions box takes remaining space */
 }
 
 /* #usageInstructions #randomPaletteBtn { */ /* No longer needed as button is outside */
@@ -110,7 +124,8 @@ main {
 
 #usageInstructions p {
     margin: 0;
-    line-height: 1.5; /* Slightly reduced line height */
+    line-height: 1.6; /* Restored line height */
+    font-size: 0.95rem; /* Adjusted font size */
     /* flex-grow: 1; */ /* No longer needed */
 }
 #usageInstructions strong {
@@ -118,18 +133,22 @@ main {
 }
 
 /* Responsive adjustment for instructions section if button and text become too cramped */
-/* This media query might not be needed for #usageInstructions anymore, or could be repurposed */
-@media (max-width: 600px) {
-    #topControlsContainer {
-        justify-content: center; /* Center the button on small screens */
+/* Responsive adjustment for top area */
+@media (max-width: 768px) { /* Wider breakpoint for stacking button and instructions */
+    #topAreaWrapper {
+        flex-direction: column; /* Stack button and instructions */
+        align-items: center; /* Center items when stacked */
+        gap: 1rem; /* Reduce gap when stacked */
     }
-    /* #usageInstructions { */
-        /* flex-direction: column; */
-        /* align-items: flex-start; */
-    /* } */
-    /* #usageInstructions #randomPaletteBtn { */
-        /* margin-bottom: 1rem; */
-    /* } */
+    #topControlsContainer {
+        margin-bottom: 0; /* Removed specific margin, gap handles it */
+        width: auto; /* Allow button to dictate container width */
+    }
+    #usageInstructions {
+        max-width: 100%; /* Allow instructions to take full width of centered parent */
+        width: calc(100% - 2rem); /* Considering parent padding */
+        min-width: 280px; /* Ensure it doesn't get too squished */
+    }
 }
 
 
@@ -201,17 +220,17 @@ main {
 #interactiveGeneratorSection label {
     font-weight: bold;
     color: var(--text-color-secondary);
-    font-size: 0.9rem;
+    font-size: 0.9rem; /* Kept from previous step, seems reasonable */
 }
 
 #interactiveGeneratorSection input[type="text"],
 #interactiveGeneratorSection select {
     background-color: var(--input-bg-color);
     color: var(--input-text-color);
-    padding: 0.75rem;
+    padding: 0.75rem; /* Kept from previous step, seems reasonable */
     border: 1px solid var(--input-border-color);
     border-radius: 4px;
-    font-size: 1rem;
+    font-size: 1rem; /* Kept from previous step */
     width: 100%;
     box-sizing: border-box;
 }
@@ -320,9 +339,9 @@ main {
     font-family: 'Courier New', Courier, monospace;
     background-color: var(--secondary-surface-color); /* Darker background for hex codes */
     color: var(--text-color); /* Light text for hex codes */
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0.5rem; /* Kept from previous step */
     border-radius: 3px;
-    font-size: 0.9rem;
+    font-size: 0.9rem; /* Kept from previous step */
     cursor: pointer; /* Indicate it's clickable for copy */
     user-select: text; /* Allow text selection for manual copy */
     border: 1px solid var(--border-color);
@@ -411,74 +430,79 @@ footer {
     }
 }
 
-/* Large screens - Side-by-side layout */
+/* Large screens - Reverted to STACKED layout for generator and palette */
 @media (min-width: 1024px) {
     #mainContentWrapper {
-        flex-direction: row; /* Side-by-side */
-        justify-content: center; /* Center the two main sections if they don't fill the space */
-        align-items: flex-start; /* Align to top */
-        gap: 0; /* No gap from flexbox, separator handles spacing */
+        flex-direction: column; /* Ensure it's column for stacking */
+        align-items: center; /* Center the stacked full-width sections */
+        gap: 2rem; /* Restore a reasonable gap for stacked items */
     }
 
     #interactiveGeneratorSection {
-        flex: 1 1 calc(50% - 0.25rem - 1px); /* 50% minus half separator width (margin + border) */
+        /* flex: 1 1 calc(50% - 0.25rem - 1px); */ /* REMOVED side-by-side flex */
+        width: 100%; /* Take full width of parent */
+        max-width: 700px; /* Restore original max-width */
         box-sizing: border-box;
-        margin-bottom: 0;
-        align-self: stretch;
-        padding: 0.75rem; /* Value from previous step, can be reviewed if still too large */
+        margin-bottom: 0; /* Gap from parent handles spacing, or use explicit margin if #mainContentWrapper has no gap */
+        /* align-self: stretch; */ /* Not needed for full-width column items */
+        padding: 1.5rem 2rem; /* Restore original padding */
     }
 
     #paletteOutputSection {
-        flex: 1 1 calc(50% - 0.25rem - 1px); /* 50% minus half separator width (margin + border) */
+        /* flex: 1 1 calc(50% - 0.25rem - 1px); */ /* REMOVED side-by-side flex */
+        width: 100%; /* Take full width of parent */
+        max-width: 1200px; /* Restore original max-width for palette display */
         box-sizing: border-box;
-        align-self: stretch;
-        padding: 0.75rem; /* Value from previous step, can be reviewed if still too large */
+        padding: 1.5rem; /* Restore reasonable padding */
     }
 
+    /* Restore some original spacing within sections if desired, or keep compactness */
     #interactiveGeneratorSection h2,
-    #paletteDisplayTitleSection h2 { /* Reduce title margins */
-        margin-top: 0.5rem;
-        margin-bottom: 0.75rem;
+    #paletteDisplayTitleSection h2 {
+        margin-top: 0; /* Original: 0 */
+        margin-bottom: 1.5rem; /* Original: 1.5rem */
+        font-size: 1.2rem; /* Keep slightly reduced from original 1.5rem */
     }
 
-    #colorPickerContainer { /* Reduce margin below pickers */
-        margin-bottom: 1rem;
-        gap: 10px; /* Reduce gap between pickers */
+    #colorPickerContainer {
+        margin-bottom: 1.5rem; /* Original: 1.5rem */
+        gap: 20px; /* Original: 20px */
     }
 
-    #baseColorSelectionGroup { /* Reduce margin below this group */
-        margin-bottom: 1rem;
-        gap: 1rem; /* Reduce gap within this group */
+    #baseColorSelectionGroup {
+        margin-bottom: 1.5rem; /* Original: 1.5rem */
+        gap: 1.5rem; /* Original: 1.5rem */
     }
 
-    #interactiveGeneratorSection .controls { /* Reduce gap in controls */
-        gap: 0.75rem;
+    #interactiveGeneratorSection .controls {
+        gap: 1rem; /* Original: 1rem */
     }
 
-    .palette { /* Reduce padding inside palette box */
-        padding: 1rem;
+    .palette {
+        padding: 1.5rem; /* Original: 1.5rem */
+        gap: 1rem; /* Original: 1rem */
     }
 
-    /* Ensure max-widths don't conflict with the 50% calculation if the screen is very wide */
-    /* We might remove explicit max-width here if 50% is desired even on very large screens, */
-    /* or adjust them. For now, 50% rule takes precedence due to flex property. */
-    /* The parent #mainContentWrapper can have a max-width if overall width needs to be capped */
-
-    .separator.horizontal-separator { /* Hide horizontal separator if side-by-side */
-        display: none;
-    }
-    .vertical-separator { /* Show vertical separator */
-        display: block;
+    .vertical-separator {
+        display: none !important; /* Ensure vertical separator is hidden */
     }
 
-     .color-swatch { /* Restore or adjust swatch size for large screens */
-        width: 120px;
-        height: 120px;
+    /* Horizontal separator can be re-added if desired between sections */
+    /* e.g., by adding <hr class="separator"> between sections in HTML and ensuring .separator is styled */
+
+     .color-swatch { /* Restore original swatch sizes for large screens */
+        width: 150px; /* Original base size before multiple resizes */
+        height: 150px;
     }
 }
 
-@media (min-width: 1200px) { /* Even larger screens, more space for swatches */
-    .color-swatch {
+/* Remove the 1200px breakpoint if 1024px now defines the largest swatch size, or adjust as needed */
+/* For simplicity, let 1024px be the point where swatches get their larger size */
+@media (min-width: 1200px) {
+    /* This breakpoint might no longer be needed if 1024px handles the largest size */
+    /* Or can be used for even larger swatches if desired. */
+    /* For now, let's ensure 1024px has the final say on swatch size */
+     .color-swatch {
         width: 150px;
         height: 150px;
     }
