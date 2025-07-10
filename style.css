@@ -72,6 +72,9 @@ main {
 
 /* Styles for Usage Instructions */
 #usageInstructions {
+    display: flex; /* Use flexbox to position button and text */
+    align-items: center; /* Vertically align button and text block */
+    gap: 1.5rem; /* Space between button and text */
     background-color: var(--primary-surface-color);
     color: var(--text-color-secondary);
     padding: 1rem 1.5rem;
@@ -83,12 +86,31 @@ main {
     border: 1px solid var(--border-color);
     box-shadow: 0 2px 8px var(--shadow-color);
 }
+
+#usageInstructions #randomPaletteBtn { /* Style the button within this section */
+    flex-shrink: 0; /* Prevent button from shrinking */
+    /* Inherits most #randomPaletteBtn styles, add specific overrides if needed */
+    /* For instance, if its original style had align-self or margins not suitable here */
+}
+
 #usageInstructions p {
     margin: 0;
     line-height: 1.6;
+    flex-grow: 1; /* Allow text to take remaining space */
 }
 #usageInstructions strong {
     color: var(--text-color);
+}
+
+/* Responsive adjustment for instructions section if button and text become too cramped */
+@media (max-width: 600px) {
+    #usageInstructions {
+        flex-direction: column; /* Stack button and text on very small screens */
+        align-items: flex-start; /* Align items to the start when stacked */
+    }
+    #usageInstructions #randomPaletteBtn {
+        margin-bottom: 1rem; /* Add space below button when stacked */
+    }
 }
 
 
@@ -380,19 +402,28 @@ footer {
     }
 
     #interactiveGeneratorSection {
-        width: 40%; /* Adjust width as desired */
-        max-width: 500px; /* Max width for generator */
-        flex-shrink: 0; /* Prevent shrinking if palette section is large */
+        /* width: 40%; */ /* Adjust width as desired */
+        /* max-width: 500px; */ /* Max width for generator */
+        /* flex-shrink: 0; */ /* Prevent shrinking if palette section is large */
+        flex: 1 1 calc(50% - 1rem); /* Grow/shrink allowed, basis is 50% minus half gap */
+        box-sizing: border-box;
         margin-bottom: 0; /* Remove bottom margin when side-by-side */
         align-self: stretch; /* Make it same height as sibling if possible */
     }
 
     #paletteOutputSection {
-        width: 55%; /* Adjust width as desired */
-        max-width: 700px; /* Max width for palette display area */
-        flex-grow: 1; /* Allow palette section to grow if space is available */
+        /* width: 55%; */ /* Adjust width as desired */
+        /* max-width: 700px; */ /* Max width for palette display area */
+        /* flex-grow: 1; */ /* Allow palette section to grow if space is available */
+        flex: 1 1 calc(50% - 1rem); /* Grow/shrink allowed, basis is 50% minus half gap */
+        box-sizing: border-box;
         align-self: stretch; /* Make it same height as sibling if possible */
     }
+
+    /* Ensure max-widths don't conflict with the 50% calculation if the screen is very wide */
+    /* We might remove explicit max-width here if 50% is desired even on very large screens, */
+    /* or adjust them. For now, 50% rule takes precedence due to flex property. */
+    /* The parent #mainContentWrapper can have a max-width if overall width needs to be capped */
 
     .separator.horizontal-separator { /* Hide horizontal separator if side-by-side */
         display: none;
