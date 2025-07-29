@@ -1,22 +1,35 @@
+<!--
+Author: Jules
+Date: 2024-07-29
+Description: This is the main HTML file for the Color Palette Generator application.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for character set and viewport -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the page -->
     <title>Color Palette Generator</title>
+    <!-- Link to the stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Header section -->
     <header>
         <h1>Color Palette Generator</h1>
         <!-- Random Palette Button removed from header -->
     </header>
 
+    <!-- Main content section -->
     <main>
-        <div id="topAreaWrapper"> <!-- New wrapper for button and instructions -->
+        <!-- Wrapper for the top area, including the random palette button and usage instructions -->
+        <div id="topAreaWrapper">
+            <!-- Container for the top controls, specifically the random palette button -->
             <div id="topControlsContainer">
                 <button id="randomPaletteBtn">Random Palette</button>
             </div>
+            <!-- Section for usage instructions -->
             <section id="usageInstructions">
                 <p>
                     <strong>Welcome to the Color Palette Generator!</strong><br>
@@ -28,22 +41,32 @@
             </p>
         </section>
 
+        <!-- Wrapper for the main content, including the interactive generator and palette display -->
         <div id="mainContentWrapper">
+            <!-- Section for the interactive harmony generator -->
             <section id="interactiveGeneratorSection">
                 <h2>Interactive Harmony Generator</h2>
 
-            <div class="generator-layout-container"> <!-- New main flex container -->
-                <div id="visualPickerGroup"> <!-- Wrapper for visual pickers -->
+            <!-- Container for the generator layout -->
+            <div class="generator-layout-container">
+                <!-- Wrapper for the visual color pickers -->
+                <div id="visualPickerGroup">
+                    <!-- Container for the color pickers -->
                     <div id="colorPickerContainer">
+                        <!-- Canvas for the hue wheel -->
                         <canvas id="hueWheelCanvas" width="250" height="250"></canvas>
+                        <!-- Canvas for the saturation/lightness picker -->
                         <canvas id="slPickerCanvas" width="200" height="200"></canvas>
                     </div>
                 </div>
-                <div class="controls-group-left"> <!-- Wrapper for all controls on the left -->
+                <!-- Wrapper for the controls on the left side -->
+                <div class="controls-group-left">
+                    <!-- Control group for the hex color input -->
                     <div class="control-group hex-input-group">
                         <label for="baseColorInput">Base Color (Hex):</label>
                         <input type="text" id="baseColorInput" value="#3498db">
                     </div>
+                    <!-- Control group for the harmony rule selection -->
                     <div class="control-group">
                         <label for="harmonyRuleSelect">Harmony Rule:</label>
                         <select id="harmonyRuleSelect">
@@ -56,13 +79,16 @@
                             <option value="shades">Shades</option>
                         </select>
                     </div>
+                    <!-- Button to generate the harmony palette -->
                     <button id="generateHarmonyBtn">Generate Harmony</button>
                 </div>
             </section>
 
             <!-- Vertical separator removed -->
 
+            <!-- Section for the palette output -->
             <div id="paletteOutputSection">
+                <!-- Section for displaying the color palette -->
                 <section id="paletteDisplay">
                     <h2 id="paletteDisplayTitle">Color Palette</h2>
                     <!-- Color palettes will be dynamically inserted here -->
@@ -80,11 +106,12 @@
         </div> <!-- End of mainContentWrapper -->
     </main>
 
+    <!-- Footer section -->
     <footer>
         <p>Click on a hex code to copy it!</p>
     </footer>
 
+    <!-- Script for the application logic -->
     <script type="module" src="script.js"></script>
 </body>
 </html>
-

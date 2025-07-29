@@ -1,21 +1,42 @@
+/*
+Author: Jules
+Date: 2024-07-29
+Description: This is the main CSS file for the Color Palette Generator application.
+*/
+
 /* Dark Theme Variables */
 :root {
-    --bg-color: #1a1a1a; /* Very dark grey, almost black */
-    --primary-surface-color: #2c2c2c; /* Dark grey for surfaces like cards, sections */
-    --secondary-surface-color: #3a3a3a; /* Slightly lighter grey for inputs, etc. */
-    --text-color: #e0e0e0; /* Light grey for text */
-    --text-color-secondary: #b0b0b0; /* Medium grey for less important text */
-    --accent-color-primary: #007bff; /* Vibrant blue for primary actions */
+    /* Background color for the entire page */
+    --bg-color: #1a1a1a;
+    /* Primary surface color for cards, sections, etc. */
+    --primary-surface-color: #2c2c2c;
+    /* Secondary surface color for inputs, etc. */
+    --secondary-surface-color: #3a3a3a;
+    /* Primary text color */
+    --text-color: #e0e0e0;
+    /* Secondary text color for less important text */
+    --text-color-secondary: #b0b0b0;
+    /* Primary accent color for buttons and links */
+    --accent-color-primary: #007bff;
+    /* Hover color for primary accent */
     --accent-color-primary-hover: #0056b3;
-    --accent-color-secondary: #5cb85c; /* Green for secondary/positive actions */
+    /* Secondary accent color for positive actions */
+    --accent-color-secondary: #5cb85c;
+    /* Hover color for secondary accent */
     --accent-color-secondary-hover: #4cae4c;
-    --border-color: #444; /* Darker border color */
-    --shadow-color: rgba(0, 0, 0, 0.5); /* Darker shadow for depth */
+    /* Border color for elements */
+    --border-color: #444;
+    /* Shadow color for elements */
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    /* Background color for input fields */
     --input-bg-color: #333;
+    /* Text color for input fields */
     --input-text-color: #e0e0e0;
+    /* Border color for input fields */
     --input-border-color: #555;
 }
 
+/* Body styles */
 body {
     font-family: sans-serif;
     margin: 0;
@@ -23,31 +44,33 @@ body {
     color: var(--text-color);
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Keep this to ensure footer sticks down if content IS short */
-    /* Consider overflow: hidden; if absolutely no scroll is desired, but can hide content */
+    min-height: 100vh;
 }
 
+/* Header styles */
 header {
     background-color: var(--primary-surface-color);
     color: var(--text-color);
-    padding: 1rem 2rem; /* Restored padding */
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 1px 3px var(--shadow-color); /* Reduced shadow */
+    box-shadow: 0 1px 3px var(--shadow-color);
     border-bottom: 1px solid var(--border-color);
 }
 
+/* Header h1 styles */
 header h1 {
     margin: 0;
-    font-size: 1.3rem; /* Reduced font size */
+    font-size: 1.3rem;
 }
 
+/* Random palette button styles */
 #randomPaletteBtn {
     background-color: var(--accent-color-secondary);
     color: var(--bg-color);
     border: none;
-    padding: 0.6rem 1.2rem; /* Reduced padding */
+    padding: 0.6rem 1.2rem;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -57,13 +80,15 @@ header h1 {
     transition: background-color 0.3s ease;
 }
 
+/* Random palette button hover styles */
 #randomPaletteBtn:hover {
     background-color: var(--accent-color-secondary-hover);
 }
 
+/* Main content styles */
 main {
     flex-grow: 1;
-    padding: 1.5rem; /* Adjusted padding */
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,88 +96,68 @@ main {
     box-sizing: border-box;
 }
 
-/* Wrapper for Top Area (Button + Instructions) */
+/* Wrapper for the top area */
 #topAreaWrapper {
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items when stacked */
-    gap: 1.5rem; /* Space between button and instructions, was 1rem, increased for clarity */
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
     width: 100%;
-    /* max-width: 1200px; */ /* Let content within define overall width, or set on main */
-    margin: 0 auto 1.5rem auto; /* Center wrapper and add space below */
-    padding: 0 1rem; /* Add horizontal padding to the wrapper if needed for alignment with content below */
+    margin: 0 auto 1.5rem auto;
+    padding: 0 1rem;
     box-sizing: border-box;
 }
 
-/* Top Controls Container for Random Palette Button */
+/* Container for the top controls */
 #topControlsContainer {
-    /* width: 100%; */
-    /* max-width: 900px; */
-    /* margin-bottom: 0.75rem; */
-    /* display: flex; */
     flex-shrink: 0;
 }
 
-#randomPaletteBtn {
-    /* Retains its original styling for color, padding, etc. */
-    /* No specific flex item properties here unless it's always in a flex container */
-    /* If it was previously in header, header specific align-items might have affected it. */
-    /* Now it's more standalone, can add margin if needed e.g. margin-right: auto to push left */
-}
-
-
-/* Styles for Usage Instructions */
+/* Usage instructions styles */
 #usageInstructions {
-    /* display: flex; */
-    /* align-items: center; */
-    /* gap: 1.5rem; */
     background-color: var(--primary-surface-color);
     color: var(--text-color-secondary);
     padding: 0.75rem 1rem;
     border-radius: 8px;
-    margin-bottom: 0; /* Margin handled by parent gap or topAreaWrapper margin */
+    margin-bottom: 0;
     width: 100%;
-    /* max-width: 900px; */
     box-sizing: border-box;
     border: 1px solid var(--border-color);
     box-shadow: 0 2px 8px var(--shadow-color);
-    flex-grow: 1; /* Instructions box takes remaining space */
+    flex-grow: 1;
 }
 
-/* #usageInstructions #randomPaletteBtn { */ /* No longer needed as button is outside */
-    /* flex-shrink: 0; */
-/* } */
-
+/* Usage instructions paragraph styles */
 #usageInstructions p {
     margin: 0;
-    line-height: 1.6; /* Restored line height */
-    font-size: 0.95rem; /* Adjusted font size */
-    /* flex-grow: 1; */ /* No longer needed */
+    line-height: 1.6;
+    font-size: 0.95rem;
 }
+
+/* Usage instructions strong tag styles */
 #usageInstructions strong {
     color: var(--text-color);
 }
 
-/* Responsive adjustment for instructions section if button and text become too cramped */
-/* Responsive adjustment for top area */
-@media (max-width: 768px) { /* Wider breakpoint for stacking button and instructions */
+/* Responsive styles for the top area */
+@media (max-width: 768px) {
     #topAreaWrapper {
-        flex-direction: column; /* Stack button and instructions */
-        align-items: center; /* Center items when stacked */
-        gap: 1rem; /* Reduce gap when stacked */
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
     }
     #topControlsContainer {
-        margin-bottom: 0; /* Removed specific margin, gap handles it */
-        width: auto; /* Allow button to dictate container width */
+        margin-bottom: 0;
+        width: auto;
     }
     #usageInstructions {
-        max-width: 100%; /* Allow instructions to take full width of centered parent */
-        width: calc(100% - 2rem); /* Considering parent padding */
-        min-width: 280px; /* Ensure it doesn't get too squished */
+        max-width: 100%;
+        width: calc(100% - 2rem);
+        min-width: 280px;
     }
 }
 
-
+/* Interactive generator section styles */
 #interactiveGeneratorSection {
     background-color: var(--primary-surface-color);
     padding: 1.5rem 2rem;
@@ -160,43 +165,47 @@ main {
     box-shadow: 0 2px 10px var(--shadow-color);
     margin-bottom: 2rem;
     width: 100%;
-    max-width: 700px; /* Max width for the controls section */
+    max-width: 700px;
     box-sizing: border-box;
     border: 1px solid var(--border-color);
 }
 
-/* New layout container for generator section */
-#interactiveGeneratorSection .generator-layout-container { /* Increased specificity */
+/* Generator layout container styles */
+#interactiveGeneratorSection .generator-layout-container {
     display: flex;
-    flex-direction: column; /* Default: stack pickers above controls */
-    gap: 1.5rem; /* Gap when stacked */
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
+/* Visual picker group styles */
 #visualPickerGroup {
     display: flex;
-    justify-content: center; /* Center the colorPickerContainer */
+    justify-content: center;
     align-items: center;
 }
 
+/* Color picker container styles */
 #colorPickerContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
-    /* margin-bottom: 1.5rem; */ /* Margin now handled by parent gaps */
     flex-wrap: wrap;
 }
 
+/* Controls group right styles */
 .controls-group-right {
     display: flex;
     flex-direction: column;
-    gap: 1rem; /* Space between control groups (hex, harmony, button) */
+    gap: 1rem;
 }
 
+/* Hex input group styles */
 .hex-input-group {
-    /* Add specific margin if needed, e.g., margin-bottom: 0.5rem; */
+    /* No specific styles */
 }
 
+/* Canvas styles */
 #hueWheelCanvas,
 #slPickerCanvas {
     border: 1px solid var(--border-color);
@@ -204,10 +213,12 @@ main {
     box-shadow: 0 0 5px var(--shadow-color);
 }
 
+/* Hue wheel canvas styles */
 #hueWheelCanvas {
-    border-radius: 50%; /* Make it visually a circle */
+    border-radius: 50%;
 }
 
+/* Interactive generator section h2 styles */
 #interactiveGeneratorSection h2 {
     margin-top: 0;
     margin-bottom: 1.5rem;
@@ -215,50 +226,44 @@ main {
     color: var(--text-color);
 }
 
-/* ID #baseColorSelectionGroup is no longer used */
-/*
-#baseColorSelectionGroup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-*/
-
-/* Styles for individual control groups (label + input/select) */
+/* Control group styles */
 .control-group {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    width: 100%; /* Make control groups take full width of their container */
+    width: 100%;
 }
 
+/* Interactive generator section controls styles */
 #interactiveGeneratorSection .controls {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center items if they don't take full width */
+    align-items: center;
     gap: 1rem;
-    width: 100%; /* Ensure controls div takes available width */
+    width: 100%;
 }
 
+/* Interactive generator section label styles */
 #interactiveGeneratorSection label {
     font-weight: bold;
     color: var(--text-color-secondary);
-    font-size: 0.9rem; /* Kept from previous step, seems reasonable */
+    font-size: 0.9rem;
 }
 
+/* Interactive generator section input and select styles */
 #interactiveGeneratorSection input[type="text"],
 #interactiveGeneratorSection select {
     background-color: var(--input-bg-color);
     color: var(--input-text-color);
-    padding: 0.75rem; /* Kept from previous step, seems reasonable */
+    padding: 0.75rem;
     border: 1px solid var(--input-border-color);
     border-radius: 4px;
-    font-size: 1rem; /* Kept from previous step */
+    font-size: 1rem;
     width: 100%;
     box-sizing: border-box;
 }
+
+/* Interactive generator section input and select focus styles */
 #interactiveGeneratorSection input[type="text"]:focus,
 #interactiveGeneratorSection select:focus {
     border-color: var(--accent-color-primary);
@@ -266,10 +271,10 @@ main {
     box-shadow: 0 0 0 2px var(--accent-color-primary-hover);
 }
 
-
+/* Generate harmony button styles */
 #generateHarmonyBtn {
     background-color: var(--accent-color-primary);
-    color: white; /* White text on blue button */
+    color: white;
     border: none;
     padding: 0.75rem 1.5rem;
     text-align: center;
@@ -283,10 +288,12 @@ main {
     margin-top: 0.5rem;
 }
 
+/* Generate harmony button hover styles */
 #generateHarmonyBtn:hover {
     background-color: var(--accent-color-primary-hover);
 }
 
+/* Separator styles */
 .separator {
     border: none;
     border-top: 1px solid var(--border-color);
@@ -295,13 +302,15 @@ main {
     max-width: 1200px;
 }
 
+/* Palette display title section styles */
 #paletteDisplayTitleSection {
     width: 100%;
-    max-width: 1200px; /* Match paletteDisplay max-width */
+    max-width: 1200px;
     text-align: center;
     margin-bottom: 1rem;
 }
 
+/* Palette display title styles */
 #paletteDisplayTitle {
     display: block;
     width: 100%;
@@ -309,15 +318,17 @@ main {
     color: var(--text-color);
 }
 
+/* Palette display styles */
 #paletteDisplay {
     display: flex;
-    flex-wrap: wrap; /* Allow multiple palettes to wrap */
-    justify-content: center; /* Center palettes if they wrap */
-    gap: 2rem; /* Space between multiple palettes */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
     width: 100%;
-    max-width: 1200px; /* Max width for the content area */
+    max-width: 1200px;
 }
 
+/* Palette styles */
 .palette {
     background-color: var(--primary-surface-color);
     border: 1px solid var(--border-color);
@@ -325,14 +336,15 @@ main {
     padding: 1.5rem;
     box-shadow: 0 2px 10px var(--shadow-color);
     display: flex !important;
-    flex-direction: column !important; /* Stack swatches vertically initially */
+    flex-direction: column !important;
     align-items: center !important;
-    gap: 1rem !important; /* Space between color swatch containers */
-    width: fit-content !important; /* Adjust to content or set a fixed width */
-    min-width: 200px !important; /* Minimum width for a palette */
+    gap: 1rem !important;
+    width: fit-content !important;
+    min-width: 200px !important;
 }
 
-.palette h2 { /* Titles within a palette, if any were to be added */
+/* Palette h2 styles */
+.palette h2 {
     margin-top: 0;
     margin-bottom: 1rem;
     font-size: 1.2rem;
@@ -340,45 +352,51 @@ main {
     text-align: center;
 }
 
+/* Color swatch container styles */
 .color-swatch-container {
     display: flex;
-    flex-direction: column; /* Stack swatch and hex code vertically */
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 10px; /* Space between each color info block */
+    margin-bottom: 10px;
 }
 
+/* Color swatch styles */
 .color-swatch {
     width: 150px;
     height: 150px;
     border-radius: 5px;
-    border: 1px solid var(--border-color); /* Darker border for swatches */
-    margin-bottom: 0.5rem; /* Space between swatch and hex code */
-    cursor: pointer; /* Indicate it's clickable for copy */
+    border: 1px solid var(--border-color);
+    margin-bottom: 0.5rem;
+    cursor: pointer;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
+/* Color swatch hover styles */
 .color-swatch:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 10px var(--accent-color-primary); /* Glow effect on hover */
+    box-shadow: 0 0 10px var(--accent-color-primary);
 }
 
+/* Hex code styles */
 .hex-code {
     font-family: 'Courier New', Courier, monospace;
-    background-color: var(--secondary-surface-color); /* Darker background for hex codes */
-    color: var(--text-color); /* Light text for hex codes */
-    padding: 0.25rem 0.5rem; /* Kept from previous step */
+    background-color: var(--secondary-surface-color);
+    color: var(--text-color);
+    padding: 0.25rem 0.5rem;
     border-radius: 3px;
-    font-size: 0.9rem; /* Kept from previous step */
-    cursor: pointer; /* Indicate it's clickable for copy */
-    user-select: text; /* Allow text selection for manual copy */
+    font-size: 0.9rem;
+    cursor: pointer;
+    user-select: text;
     border: 1px solid var(--border-color);
 }
 
+/* Hex code hover styles */
 .hex-code:hover {
-    background-color: var(--input-bg-color); /* Even darker on hover */
+    background-color: var(--input-bg-color);
     border-color: var(--accent-color-secondary);
 }
 
+/* Footer styles */
 footer {
     background-color: var(--primary-surface-color);
     color: var(--text-color-secondary);
@@ -388,79 +406,77 @@ footer {
     border-top: 1px solid var(--border-color);
 }
 
-/* Main Content Wrapper for Side-by-Side Layout */
+/* Main content wrapper styles */
 #mainContentWrapper {
     display: flex;
-    flex-direction: column; /* Default for smaller screens */
-    gap: 2rem; /* Gap between generator and palette sections when stacked */
+    flex-direction: column;
+    gap: 2rem;
     width: 100%;
-    align-items: flex-start; /* Align items to the start when stacked */
+    align-items: flex-start;
 }
 
+/* Interactive generator and palette output section styles */
 #interactiveGeneratorSection,
 #paletteOutputSection {
-    width: 100%; /* Full width when stacked */
+    width: 100%;
     box-sizing: border-box;
 }
 
+/* Palette output section styles */
 #paletteOutputSection {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center title and palette display */
+    align-items: center;
 }
 
-
-/* Separator Styling */
+/* Separator styles */
 .separator {
     border: none;
     border-top: 1px solid var(--border-color);
-    margin: 2rem 0; /* Default for horizontal separator */
+    margin: 2rem 0;
     width: 100%;
     max-width: 1200px;
 }
 
-.vertical-separator { /* Initially hidden, shown in side-by-side layout */
+/* Vertical separator styles */
+.vertical-separator {
     display: none;
     border: none;
     border-left: 1px solid var(--border-color);
-    margin: 0; /* Remove horizontal margins, rely on parent gap */
-    align-self: stretch; /* Makes it take full height of flex container */
+    margin: 0;
+    align-self: stretch;
 }
 
-
-/* Responsive adjustments */
-/* Medium screens - still stacked, but allow generator to not be overly wide */
+/* Responsive adjustments for medium screens */
 @media (min-width: 768px) {
     #interactiveGeneratorSection {
-        max-width: 700px; /* Keep interactive section from becoming too wide */
-        align-self: center; /* Center it if it's narrower than mainContentWrapper */
+        max-width: 700px;
+        align-self: center;
     }
      #paletteOutputSection {
-        max-width: 1200px; /* Palette can be wider */
+        max-width: 1200px;
         align-self: center;
     }
 
-    /* DEBUGGING: Force palette horizontal layout */
-    #paletteDisplay .palette { /* Increased specificity */
+    #paletteDisplay .palette {
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: wrap !important;
         justify-content: center !important;
-        /* width: fit-content !important; */ /* Already in base, or use 100% if box should stretch */
     }
 
     .color-swatch-container {
-        margin-right: 1rem; /* Space between swatch containers when horizontal */
-        margin-bottom: 1rem; /* Consistent bottom margin */
+        margin-right: 1rem;
+        margin-bottom: 1rem;
     }
 
-     .color-swatch { /* Swatch size adjustment for medium screens */
-        width: 100px; /* Slightly smaller for medium screens if palette is also narrower */
+     .color-swatch {
+        width: 100px;
         height: 100px;
     }
 }
 
-/* Large screens - STACKED layout for main sections, but side-by-side INSIDE generator */
+/* Responsive adjustments for large screens */
 @media (min-width: 1024px) {
     #mainContentWrapper {
         flex-direction: row;
@@ -468,7 +484,6 @@ footer {
         gap: 2rem;
     }
 
-    /* DEBUGGING: Force internal layout for generator */
     #interactiveGeneratorSection .generator-layout-container {
         flex-direction: row;
     }
@@ -481,52 +496,44 @@ footer {
         flex: 1 1 50%;
     }
 
-    /* Restore some original spacing within sections if desired, or keep compactness */
     #interactiveGeneratorSection h2,
     #paletteDisplayTitleSection h2 {
-        margin-top: 0; /* Original: 0 */
-        margin-bottom: 1.5rem; /* Original: 1.5rem */
-        font-size: 1.2rem; /* Keep slightly reduced from original 1.5rem */
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
     }
 
     #colorPickerContainer {
-        margin-bottom: 1.5rem; /* Original: 1.5rem */
-        gap: 20px; /* Original: 20px */
+        margin-bottom: 1.5rem;
+        gap: 20px;
     }
 
     #baseColorSelectionGroup {
-        margin-bottom: 1.5rem; /* Original: 1.5rem */
-        gap: 1.5rem; /* Original: 1.5rem */
+        margin-bottom: 1.5rem;
+        gap: 1.5rem;
     }
 
     #interactiveGeneratorSection .controls {
-        gap: 1rem; /* Original: 1rem */
+        gap: 1rem;
     }
 
     .palette {
-        padding: 1.5rem; /* Original: 1.5rem */
-        gap: 1rem; /* Original: 1rem */
+        padding: 1.5rem;
+        gap: 1rem;
     }
 
     .vertical-separator {
-        display: none !important; /* Ensure vertical separator is hidden */
+        display: none !important;
     }
 
-    /* Horizontal separator can be re-added if desired between sections */
-    /* e.g., by adding <hr class="separator"> between sections in HTML and ensuring .separator is styled */
-
-     .color-swatch { /* Restore original swatch sizes for large screens */
-        width: 150px; /* Original base size before multiple resizes */
+     .color-swatch {
+        width: 150px;
         height: 150px;
     }
 }
 
-/* Remove the 1200px breakpoint if 1024px now defines the largest swatch size, or adjust as needed */
-/* For simplicity, let 1024px be the point where swatches get their larger size */
+/* Responsive adjustments for extra large screens */
 @media (min-width: 1200px) {
-    /* This breakpoint might no longer be needed if 1024px handles the largest size */
-    /* Or can be used for even larger swatches if desired. */
-    /* For now, let's ensure 1024px has the final say on swatch size */
      .color-swatch {
         width: 150px;
         height: 150px;
